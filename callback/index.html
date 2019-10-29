@@ -1,0 +1,35 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        function f(time, onSuccess, onError) {
+            if (typeof x !== 'number') {
+                if (onError && typeof onError === 'function') {
+                    onError("not a number!");
+                }
+                return;
+            }
+
+            setTimeout(function() {
+                if (onSuccess && typeof onSuccess === 'function') {
+                    onSuccess("finished");
+                }
+            }, time);
+        }
+
+        /* f(2000, function(msg) {
+            alert(msg);
+        }, function(error) {
+            alert(error);
+        }); */
+
+        f("2000", function(msg) {
+            alert(msg);
+        }, function(error) {
+            alert(error);
+        });
+
+    });
+</script>
+
+<body>
+</body>

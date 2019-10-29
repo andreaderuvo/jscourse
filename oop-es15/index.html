@@ -1,0 +1,33 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        //ecmascript 15
+        class Rectangle {
+            constructor(height, width) {
+                this.height = height;
+                this.width = width;
+            }
+
+            area() {
+                return this.height * this.width;
+            }
+        }
+
+        let rectangle = new Rectangle(3, 4);
+        console.log(rectangle.area());
+
+        class ColoredRectangle extends Rectangle {
+            constructor(height, width, color) {
+                super(height, width);
+                this.color = color;
+            }
+        }
+
+        let coloredRectangle = new ColoredRectangle(5, 20, 'Yellow');
+        console.log(coloredRectangle);
+        console.log(coloredRectangle.area());
+
+    });
+</script>
+
+<body>
+</body>
