@@ -1,0 +1,73 @@
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            let brands = {
+                volvo: "VOLVO",
+                ford: "FORD",
+                nissan: "NISSAN"
+            }
+
+            //Constructor
+            var Car = function(brand) {
+                this.brand = brand;
+                console.log('instance created');
+            };
+
+            //methods
+            Car.prototype.price = function() {
+                return (Math.random(1) * 100000).toFixed(0) + "€";
+            }
+
+            var car1 = new Car(brands.volvo);
+            var car2 = new Car(brands.ford);
+
+
+            console.log(Car.prototype);
+
+            console.log(typeof car1);
+            console.log(typeof car2);
+            console.log(car1.price());
+            console.log(car2.price());
+
+
+            //extensibility
+            function Truck(brand, length) {
+                Car.call(this, brand);
+
+                this.length = length;
+            };
+
+            Truck.prototype = Object.create(Car.prototype);
+            Truck.prototype.constructor = Truck;
+            //override
+            Truck.prototype.price = function() {
+                return (Math.random(1) * 100000).toFixed(0) + "$";
+            }
+            Truck.prototype.discount = function() {
+                return (Math.random(1) * 100000).toFixed(0) + "$";
+            }
+
+            var truck1 = new Truck(brands.ford, 200);
+            var truck2 = new Truck(brands.nissan, 250);
+
+            console.log(truck1);
+            console.log(truck2);
+            console.log(Truck.prototype);
+
+            console.log(truck1.price());
+            console.log(truck2.price());
+            console.log(truck1.discount());
+            console.log(truck2.discount());
+
+            console.log(car1 instanceof Car);
+            console.log(car1 instanceof Truck);
+            console.log(truck1 instanceof Car);
+            console.log(truck1 instanceof Truck);
+
+        });
+    </script>
+</head>
+
+<body>
+</body>

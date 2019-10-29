@@ -1,0 +1,68 @@
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            //https://jsonplaceholder.typicode.com/
+
+            var url = "https://jsonplaceholder.typicode.com/todos";
+
+            var todos;
+            var xhr = new XMLHttpRequest();
+
+            /*
+            GET ASYNC
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    todos = this.responseText;
+                    console.log(todos);
+                    processData(JSON.parse(todos));
+                }
+            };
+
+            xhr.open("GET", url, true);
+            xhr.send();
+
+            console.log(todos);
+
+
+            function processData(todos) {
+                //console.log(todos);
+                for (todo of todos) {
+                    console.log(todo);
+                }
+            } */
+
+
+            /*  fetch(url)
+                .then(function (response) {
+                     return response.json();
+                 })
+                 .then(function (data) {
+                     console.log(data);
+                 }); */
+
+
+
+            //POST SYNC
+            var response;
+            var body = {
+                "userId": 1,
+                "id": 5,
+                "title": "nesciunt quas odio",
+                "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+            };
+            xhr.open('POST', url, false);
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 201) {
+                    //alert(xhr.responseText);
+                    response = JSON.parse(xhr.responseText);
+                }
+            }
+            xhr.send(JSON.stringify(body));
+            console.log(response);
+        });
+    </script>
+</head>
+
+<body>
+</body>

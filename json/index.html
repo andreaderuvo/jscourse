@@ -1,0 +1,33 @@
+<head>
+    <script>
+        //json
+        x = {
+            "a": 1,
+            "b": [2, 3],
+            "c": {
+                "i": 4,
+                "j": 5
+            },
+            "d": function() {
+                return 6;
+            }
+        }
+
+        console.log(x);
+        console.log(x.b);
+        console.log(x.c.i);
+        console.log(x.d());
+
+        //serialization
+        console.log("serialization", JSON.stringify(x));
+
+        //deserialization
+        let json = '{"a": 5, "b": 6}';
+        console.log("deserialization", JSON.parse(json));
+
+    </script>
+</head>
+
+<body>
+
+</body>

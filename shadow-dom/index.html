@@ -1,0 +1,59 @@
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            /* WITH SHADOW DOM */
+            let divElementWithShadow = document.createElement('div');
+            let pElement = document.createElement('p');
+            pElement.innerHTML = 'with shadow!'
+            let shadow = divElementWithShadow.attachShadow({
+                mode: 'open'
+            });
+            shadow.appendChild(pElement.cloneNode(true));
+            document.body.appendChild(divElementWithShadow);
+
+            /* WITHOUT SHADOW DOM */
+            pElement.innerHTML = 'without shadow!'
+            let divElementWithoutShadow = document.createElement('div');
+            divElementWithoutShadow.appendChild(pElement.cloneNode(true));
+            document.body.appendChild(divElementWithoutShadow);
+
+            /* QUERYING THE DOM */
+            console.log(document.querySelector('p'));
+
+            /* QUERYING THE SHADOW DOM */
+            console.log(divElementWithShadow.shadowRoot.querySelector('p'));
+
+
+            var style = document.createElement('style');
+            style.textContent = `
+                :host {
+                    background: black;
+                }
+
+                p {
+                    color: gold;
+                    font-size: 2em;
+                }
+            
+            `
+
+            setTimeout(function() {
+                shadow.appendChild(style);
+            }, 5000);
+
+        });
+    </script>
+    <style>
+        body {
+            font-size: 4em;
+        }
+        
+        p {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+</body>
