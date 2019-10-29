@@ -1,7 +1,17 @@
 <head>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            
+
+            let asyncFunction = new Promise((resolve, reject) => {
+                setTimeout(function() {
+                    resolve("Success!");
+                }, 2500);
+            });
+
+            asyncFunction.then((successMessage) => {
+                console.log("Yay! " + successMessage);
+            });
+
         });
     </script>
 </head>

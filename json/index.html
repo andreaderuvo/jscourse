@@ -22,9 +22,33 @@
         console.log("serialization", JSON.stringify(x));
 
         //deserialization
-        let json = '{"a": 5, "b": 6}';
+        let json = '{"a": 5, "b": 6, "c": 7}';
         console.log("deserialization", JSON.parse(json));
 
+
+
+        let jsonToMap = [{
+            name: 'Mario',
+            surname: 'Rossi'
+        }, {
+            name: 'Giuseppe',
+            surname: 'Verdi'
+        }, {
+            name: 'Giacomo',
+            surname: 'Rossi'
+        }, {
+            name: 'Mattia',
+            surname: 'Micheli'
+        }];
+
+        //filtering
+        console.log(jsonToMap.filter(person => person.surname === 'Rossi'));
+
+        //mapping
+        console.log(jsonToMap.map(person => {
+                    person.surname = (person.surname === 'Rossi') ? 'Rossino' : person.surname;
+                    return person;
+                }));
     </script>
 </head>
 
