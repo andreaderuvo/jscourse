@@ -15,6 +15,31 @@ function readonly(target, name, descriptor) {
   return descriptor;
 }
 
+function log(target, name, descriptor) {
+  var original = descriptor.value;
+
+  if (typeof original === 'function') {
+    descriptor.value = function () {
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      console.log("Arguments: ".concat(args));
+
+      try {
+        var result = original.apply(this, args);
+        console.log("Result: ".concat(result));
+        return result;
+      } catch (e) {
+        console.log("Error: ".concat(e));
+        throw e;
+      }
+    };
+  }
+
+  return descriptor;
+}
+
 var Example = (_class =
 /*#__PURE__*/
 function () {
@@ -23,12 +48,11 @@ function () {
   }
 
   _createClass(Example, [{
-    key: "a",
-    value: function a() {}
-  }, {
-    key: "b",
-    value: function b() {}
+    key: "sum",
+    value: function sum(a, b) {
+      return a + b;
+    }
   }]);
 
   return Example;
-}(), (_applyDecoratedDescriptor(_class.prototype, "b", [readonly], Object.getOwnPropertyDescriptor(_class.prototype, "b"), _class.prototype)), _class);
+}(), (_applyDecoratedDescriptor(_class.prototype, "sum", [log], Object.getOwnPropertyDescriptor(_class.prototype, "sum"), _class.prototype)), _class);
