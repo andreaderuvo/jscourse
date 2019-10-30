@@ -1,0 +1,50 @@
+<script>
+    let hello = "hello";
+    let world = "world";
+
+    console.log(`${hello} ${world}`);
+
+    let a = 5;
+    let b = 10;
+
+    console.log(`${a + b}`);
+
+    isHero = function() {
+        return Math.random() >= 0.5;
+    }
+
+    console.log(`You are a ${`super-${isHero() ? 'hero' : 'villain'}`}`);
+
+    const dogs = [
+        { name: 'Snickers', age: 2 },
+        { name: 'Hugo', age: 8 },
+        { name: 'Sunny', age: 1 }
+    ];
+
+    const markup = `
+        <ul class="dogs">
+            ${dogs.map(dog => `<li>${dog.name} is ${dog.age * 7}</li>`).join('')}
+        </ul>
+    `;
+
+    console.log(markup);
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.body.innerHTML = eval(document.getElementById("template").innerHTML);
+    });
+</script>
+
+<script id="template" type="text/template">
+    `
+    <h1>Template</h1>
+    <ul class="dogs">
+        ${dogs.map(dog => `
+        <li>${dog.name} is ${dog.age * 7}</li>`).join('')}
+    </ul>
+    `
+</script>
+
+<body>
+
+
+</body>
