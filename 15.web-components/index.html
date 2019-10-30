@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+            ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+    <script type="module" src="elements/my-first-element.js">
+    </script>
+    <script type="module" src="elements/my-second-element.js">
+    </script>
+    <script type="module" src="elements/login-element.js">
+    </script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.0/webcomponents-bundle.js"></script>
+    <style>
+        @import "lib/tailwind.min.css";
+    </style>
+
+    <script>
+        window.addEventListener('WebComponentsReady', function() {
+            console.log('Web components ready!');
+            // your web components here
+
+            let myLoginElement = document.getElementsByTagName("my-login")[0];
+            myLoginElement.addEventListener("onLoginEvent", function(e) {
+                alert("EVENT");
+            });
+
+            myLoginElement.addEventListener("onUsernameKeyupEvent", function(e) {
+                alert("KEYUP");
+            });
+
+            myLoginElement.addEventListener("onPasswordKeyupEvent", function(e) {
+                alert("KEYUP");
+            });
+
+            console.log(myLoginElement.errors)
+
+            setTimeout(function() {
+                myLoginElement.showError();
+            }, 2000);
+        });
+    </script>
+</head>
+
+<body class="bg-green-200">
+    <div class="flex items-center justify-center h-screen">
+        <div class="w-auto">
+            <my-login onErrorMessage="Sorry!"></my-login>
+        </div>
+    </div>
+</body>

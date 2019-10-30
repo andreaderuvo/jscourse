@@ -1,19 +1,15 @@
-const template = document.createElement('template');
-
-template.innerHTML = `
-<button>prova</button>
-`
-
-class MyElement extends HTMLElement {
+class MyFirstElement extends HTMLElement {
     constructor() {
         // always call super() first
         super();
         console.log('constructed!');
-        this._shadowRoot = this.attachShadow({ 'mode': 'open' });
-        this._shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
     connectedCallback() {
+        
+        this.innerHTML = `<h1>First Element</h1>`;
+        this.style="color: red";
+
         console.log('connected!');
     }
 
@@ -30,8 +26,8 @@ class MyElement extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['my-attr'];
+        return ['my-first-attr'];
     }
 }
 
-window.customElements.define('my-element', MyElement);
+window.customElements.define('my-first-element', MyFirstElement);

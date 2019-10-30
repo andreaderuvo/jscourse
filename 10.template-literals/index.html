@@ -9,17 +9,22 @@
 
     console.log(`${a + b}`);
 
-    isHero = function() {
+    function isHero() {
         return Math.random() >= 0.5;
     }
 
     console.log(`You are a ${`super-${isHero() ? 'hero' : 'villain'}`}`);
 
-    const dogs = [
-        { name: 'Snickers', age: 2 },
-        { name: 'Hugo', age: 8 },
-        { name: 'Sunny', age: 1 }
-    ];
+    const dogs = [{
+        name: 'Snickers',
+        age: 2
+    }, {
+        name: 'Hugo',
+        age: 8
+    }, {
+        name: 'Sunny',
+        age: 1
+    }];
 
     const markup = `
         <ul class="dogs">
@@ -30,7 +35,17 @@
     console.log(markup);
 
     document.addEventListener("DOMContentLoaded", function () {
-        document.body.innerHTML = eval(document.getElementById("template").innerHTML);
+        //document.body.innerHTML = eval(document.getElementById("template").innerHTML);
+
+        const fragment = document.getElementById("template_");
+        
+        dogs.forEach(dog => {
+            const instance = document.importNode(fragment.content, true);
+            instance.querySelector('.name').innerHTML = dog.name;
+            instance.querySelector('.age').innerHTML = dog.age;
+            document.body.appendChild(instance);
+        });
+        
     });
 </script>
 
@@ -44,7 +59,14 @@
     `
 </script>
 
+<template id="template_">
+    <li><span class="name"></span> is <span class="age"></span></li>
+</template>
+
 <body>
 
 
+    <ul id="ul">
+
+    </ul>
 </body>
