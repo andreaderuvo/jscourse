@@ -1,5 +1,6 @@
 <head>
     <script>
+        //https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Promise
         document.addEventListener("DOMContentLoaded", function() {
 
             let asyncFunction = new Promise((resolve, reject) => {
@@ -11,6 +12,23 @@
             asyncFunction.then((successMessage) => {
                 console.log("Yay! " + successMessage);
             });
+
+
+            function myAsyncAjax(url) {
+                return new Promise((resolve, reject) => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open("GET", url);
+                    xhr.onload = () => resolve(xhr.responseText);
+                    xhr.onerror = () => reject(xhr.statusText);
+                    xhr.send();
+                });
+            }
+
+            myAsyncAjax("https://jsonplaceholder.typicode.com/todos").then(function(response) {
+                console.log(response);
+            }, function(error) {
+                console.log(error);
+            })
 
         });
     </script>

@@ -1,0 +1,23 @@
+<script type="text/javascript">
+    //ex: cart
+    window.sessionStorage.setItem("loggedIn", true);
+
+
+    //ex: cookie
+    window.localStorage.setItem("loggedIn", true);
+
+    console.log(window.localStorage.getItem("loggedIn"), 'local');
+    console.log(window.sessionStorage.getItem("loggedIn"), 'session');
+
+
+    /*PATTERN*/
+    function reloadOnTenantChange(event) {
+        if (event.key == "current_tenant" && event.oldValue != event.newValue) {
+            alert("Value changed on other tab!!!")
+        }
+    }
+
+
+    localStorage.setItem("current_tenant", "Tenant1");
+    window.addEventListener('storage', reloadOnTenantChange, false);
+</script>
