@@ -1,23 +1,28 @@
 <head>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            //alert("DOMContentLoaded");
+
             sumButton = document.getElementById("sumButton");
 
-            f = function(e) {
-                alert("clicked " + "(" + e.x + "," + e.y + ")");
-                document.removeEventListener("click", f);
-            }
-            document.addEventListener("click", f);
-
-            sumButton.addEventListener("click", function(e) {
+            sumButton.addEventListener("click", function(event) {
+                console.log(event);
                 let number1 = parseInt(document.getElementById("number1").value);
                 let number2 = parseInt(document.getElementById("number2").value);
                 document.getElementById("sum").value = number1 + number2;
             });
 
-            hoverDiv.addEventListener("mouseover", function (e) {
+            /* f = function(e) {
+                alert("clicked " + "(" + e.x + "," + e.y + ")");
+                document.removeEventListener("click", f);
+            }
+
+            document.addEventListener("click", f); */
+
+            /* hoverDiv = document.getElementById("hoverDiv");
+            hoverDiv.addEventListener("mouseover", function(e) {
                 alert("entered in hoverDiv");
-            });
+            }); */
         });
     </script>
     <style>

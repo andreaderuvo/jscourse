@@ -9,7 +9,8 @@
             var xhr = new XMLHttpRequest();
 
             /*
-            GET ASYNC
+                GET ASYNC
+            */
             xhr.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     todos = this.responseText;
@@ -20,7 +21,6 @@
 
             xhr.open("GET", url, true);
             xhr.send();
-
             console.log(todos);
 
 
@@ -29,7 +29,7 @@
                 for (todo of todos) {
                     console.log(todo);
                 }
-            } */
+            }
 
 
             /*  fetch(url)
@@ -43,7 +43,7 @@
 
 
             //POST SYNC
-            var response;
+            /* var response;
             var body = {
                 "userId": 1,
                 "id": 5,
@@ -59,7 +59,7 @@
                 }
             }
             xhr.send(JSON.stringify(body));
-            console.log(response);
+            console.log(response); */
         });
     </script>
 </head>

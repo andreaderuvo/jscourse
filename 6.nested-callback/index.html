@@ -2,7 +2,7 @@
     document.addEventListener("DOMContentLoaded", function() {
 
         function f(time, onSuccess, onError) {
-            if (typeof x !== 'number') {
+            if (typeof time !== 'number') {
                 if (onError && typeof onError === 'function') {
                     onError("not a number!");
                 }
@@ -16,11 +16,11 @@
             }, time);
         }
 
-        /* f(2000, function(msg) {
-            alert(msg);
-        }, function(error) {
-            alert(error);
-        }); */
+        /*  f(2000, function(msg) {
+             alert(msg);
+         }, function(error) {
+             alert(error);
+         }); */
 
         f("2000", function(msg) {
             alert(msg);

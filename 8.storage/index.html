@@ -6,8 +6,8 @@
     //ex: cookie
     window.localStorage.setItem("loggedIn", true);
 
-    console.log(window.localStorage.getItem("loggedIn"), 'local');
-    console.log(window.sessionStorage.getItem("loggedIn"), 'session');
+    /* console.log(window.localStorage.getItem("loggedIn"), 'local');
+    console.log(window.sessionStorage.getItem("loggedIn"), 'session'); */
 
 
     /*PATTERN*/
@@ -16,8 +16,6 @@
             alert("Value changed on other tab!!!")
         }
     }
-
-
     localStorage.setItem("current_tenant", "Tenant1");
     window.addEventListener('storage', reloadOnTenantChange, false);
 </script>

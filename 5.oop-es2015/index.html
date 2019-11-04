@@ -1,0 +1,63 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        //ecmascript 15
+        /*  class Rectangle {
+             constructor(height, width) {
+                 this.height = height;
+                 this.width = width;
+             }
+
+             area() {
+                 return this.height * this.width;
+             }
+         }
+
+         let rectangle = new Rectangle(3, 4);
+         console.log(rectangle.area());
+
+         class ColoredRectangle extends Rectangle {
+             constructor(height, width, color) {
+                 super(height, width);
+                 this.color = color;
+             }
+         }
+
+         let coloredRectangle = new ColoredRectangle(5, 20, 'Yellow');
+         console.log(coloredRectangle);
+         console.log(coloredRectangle.area()); */
+
+        class Abstract {
+            constructor() {
+                if (new.target === Abstract) {
+                    throw new TypeError("Cannot construct Abstract instances directly");
+                }
+
+                if (this.method === undefined) {
+                    // or maybe test typeof this.method === "function"
+                    throw new TypeError("Must override method");
+                }
+            }
+        }
+
+        class Derived extends Abstract {
+            constructor() {
+                super();
+            }
+
+            //ovveride
+            method() {
+                console.log("implemented");
+            }
+        }
+
+        try {
+            const a = new Abstract();
+        } catch (e) {
+            console.log(e.message);
+        }
+        const b = new Derived();
+    });
+</script>
+
+<body>
+</body>

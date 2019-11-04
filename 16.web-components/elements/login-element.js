@@ -8,7 +8,7 @@ template.innerHTML = `
 <div class="w-full">
   <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label class="block text-gray700 text-sm font-bold mb-2" for="username">
         Username
       </label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
@@ -32,12 +32,14 @@ class MyLogin extends HTMLElement {
 
     _errors = {
         login: "Invalid Login",
+        email: "Invalid Email"
     }
 
     constructor() {
         // always call super() first
         super();
         console.log('constructed!');
+
         this._shadowRoot = this.attachShadow({ 'mode': 'open' });
         this._shadowRoot.appendChild(template.content.cloneNode(true));
 
@@ -62,6 +64,11 @@ class MyLogin extends HTMLElement {
         console.log(onErrorMessage)
         if (onErrorMessage) {
             this.errors.login = onErrorMessage;
+        }
+
+        let onInvalidEmail = this.getAttribute('onInvalidEmail');
+        if (onInvalidEmail) {
+            this.errors.email = onInvalidEmail;
         }
     }
 

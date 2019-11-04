@@ -1,34 +1,36 @@
 <head>
     <script>
         //runtime dynamic typing
-        let x = 4;
+        /*  let x = 4;
 
-        console.log(x, typeof x);
+         console.log(x, typeof x);
 
-        x = "4";
 
-        console.log(x, typeof x);
+         x = "4";
 
+         console.log(x, typeof x); */
 
         //functions
-        x = function() {
+        /* x = function() {
             console.log("Hello world!!!");
         }
 
-        x();
+        x(); */
+
 
         //mind the difference... naming
-        function y(suffix) {
-            console.log("Hello " + suffix);
-        }
+        /*  function y(suffix) {
+             console.log("Hello " + suffix);
+         }
 
-        y("world!!!");
+         y("world!!!"); */
+
 
         //let temp = 10;
 
 
         //Scoping
-        var temp = 20;
+        /* var temp = 20;
 
         console.log("1", temp);
         x = function() {
@@ -37,10 +39,11 @@
             console.log("3", temp);
         }
         x();
-
         console.log("4", temp);
+        alert("return"); */
 
         //but...
+        /* var temp = 20;
         console.log("1", temp);
         x = function() {
             console.log("2", temp);
@@ -49,26 +52,27 @@
         }
         x();
 
-        console.log("4", temp);
+        console.log("4", temp); */
 
 
         //let and var
-        x = function() {
-            var foo = "Foo";
-            let bar = "Bar";
+        /*  x = function() {
+             var foo = "Foo";
+             let bar = "Bar";
 
-            console.log(foo, bar);
+             console.log(foo, bar);
 
-            {
-                let baz = "Bazz";
-                console.log(baz);
-                console.log(foo, bar);
-            }
+             {
+                 let baz = "Bazz";
+                 console.log(baz);
+                 console.log(foo, bar);
+             }
 
-            //console.log(baz); // ReferenceError
-        }
+             console.log(baz); // ReferenceError
+         } */
 
-        x()
+        /* x() */
+
 
 
         //array
@@ -78,8 +82,19 @@
         x[2] = 9;
         x["ciao"] = 10;
         console.log(x);
+        alert("return");
 
         //cycles
+        for (i = 0; i < x.length; i++) {
+            console.log(x[i]);
+        }
+
+        i = 0;
+        while (i < temp.length) {
+            console.log(temp[i]);
+            i++;
+        }
+
         for (i of x) {
             console.log("qui", i);
         }
@@ -93,9 +108,10 @@
         x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         console.log(x.filter(o => o >= 5));
 
-        
-
-
+        console.log(x.filter(o => {
+            k = o * 2;
+            return k >= 4
+        }));
     </script>
 </head>
 
