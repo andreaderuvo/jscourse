@@ -59,7 +59,50 @@
                 }
             }
             xhr.send(JSON.stringify(body));
-            console.log(response); */
+            console.log(response); 
+            
+            */
+
+
+            /*
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                        body: JSON.stringify(body)
+            }).then(res => res.json())
+                        .then(res => console.log(res)).catch(error=> { console.err('error', error) });
+            */
+
+
+
+            //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+
+            //ASYNC AND AWAIT
+
+            //fetch(url).then(response=>response.json()).then(data=>console.log(data));
+
+
+            /*async function getJSON(url) {
+             let r = await fetch(url);
+             return await r.json();
+            }*/
+
+            /*getJSON = async (url) => {
+             let r = await fetch(url);
+             return await r.json();
+            }*/
+
+            getJSON = (async(url) => {
+                let r = await fetch(url);
+                return await r.json();
+            })();
+
+
+            getJSON.then(data => console.log(data));
         });
     </script>
 </head>

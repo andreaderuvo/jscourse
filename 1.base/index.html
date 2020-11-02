@@ -1,108 +1,252 @@
 <head>
     <script>
         //runtime dynamic typing
-        /*  let x = 4;
+        console.log("(start) dynamic typing");
+        let x = 4;
+        console.log(x, typeof x);
+        x = "4";
+        console.log(x, typeof x);
+        x = 4.13;
+        console.log(x, typeof x);
+        console.log("(end) dynamic typing");
 
-         console.log(x, typeof x);
+        console.log("\n");
+
+        //Comparison Operator
+        console.log("(start) Comparison Operator");
+        x = 4;
+        console.log(Number(x) == x);
+        x = "4";
+        console.log(Number(x) == x);
+        console.log(Number(x) === x);
+        console.log(Number(x) != x);
+        console.log(Number(x) !== x);
+
+        y = 5;
+        console.log(x > y);
+        console.log(x < y)
+        console.log(x >= y);
+        console.log(x <= y)
+        console.log("(end) Comparison Operator");
+
+        //Logical Operators
+        console.log("(start) Logical Operators");
+        x = "hello";
+        y = "world";
+        console.log(x.length > 4 && y.length > 5);
+        console.log(x.length > 4 || y.length > 4);
+        console.log(!(1 > 0));
+
+        ret = (1 > 0) ? "It's true!" : "No! It's false.";
+        console.log(ret);
+        console.log("(end) Logical Operators")
+
+        //Arithmetic
+        console.log("(start) Arithmetic");
+        x = 10;
+        y = 20;
+        z = x + y;
+        console.log(z);
+        z++; //z=z+1;
+        console.log(z);
+        console.log(z++);
+        console.log(z);
+        console.log(++z);
+        z = x * y;
+        console.log(z);
+        z = Math.sqrt(z);
+        console.log(z);
+
+        x = 2;
+        y = 3;
+        z = Math.pow(2, 3);
+        console.log(z);
+        console.log(x ** 3);
+
+        x = "200";
+        y = "2";
+        z = x / y;
+        console.log(z);
+
+        y = "hello";
+        z = x / y;
+        console.log(z); //NaN: Not a Number
+
+        x = 0xFF; // 15*16^0 + 15*16^1 = 15+240=255
+        console.log(x);
+        z = x + x;
+        console.log(z);
+
+        x = Number(4);
+        y = 4;
+        z = new Number(4);
+        console.log(typeof x, typeof y, typeof z);
+
+        x = 20;
+        y = 3;
+        z = x % y; // 20mod3=2
+        console.log(z);
+        console.log("(end) Arithmetic")
 
 
-         x = "4";
-
-         console.log(x, typeof x); */
-
-        //functions
-        /* x = function() {
-            console.log("Hello world!!!");
-        }
-
-        x(); */
-
-
-        //mind the difference... naming
-        /*  function y(suffix) {
-             console.log("Hello " + suffix);
-         }
-
-         y("world!!!"); */
-
-
-        //let temp = 10;
-
-
-        //Scoping
-        /* var temp = 20;
-
-        console.log("1", temp);
+        console.log("(start) functions");
         x = function() {
-            console.log("2", temp);
-            temp = 100;
-            console.log("3", temp);
+            return "Hello world!!!";
         }
-        x();
-        console.log("4", temp);
-        alert("return"); */
+        console.log(x());
 
-        //but...
-        /* var temp = 20;
-        console.log("1", temp);
-        x = function() {
-            console.log("2", temp);
-            var temp = 100;
-            console.log("3", temp);
+        x = () => {
+            return "Hello world!!!";
         }
-        x();
+        console.log(x());
 
-        console.log("4", temp); */
+        x = () => "Hello world!!!";
+        console.log(x());
+
+        function f() {
+            return "Hello world!!!";
+        }
+        console.log(f());
+
+        sum = function(a, b) {
+            return a + b;
+        }
+        console.log(sum(5, 10));
 
 
-        //let and var
-        /*  x = function() {
-             var foo = "Foo";
-             let bar = "Bar";
+        sum = function() {
+            return arguments[0] + arguments[1];
+        }
+        console.log(sum(5, 10));
 
-             console.log(foo, bar);
+        z = (function() {
+            return "hello world"
+        })();
 
-             {
-                 let baz = "Bazz";
-                 console.log(baz);
-                 console.log(foo, bar);
-             }
+        console.log(z);
+        console.log("(end) functions");
 
-             console.log(baz); // ReferenceError
-         } */
 
-        /* x() */
+        console.log("(start) scoping")
+
+        var a = 10;
+        let b = 20;
+
+        console.log(window.a);
+        console.log(window.b); //avoid memory consumption
+
+        //var a = 10; //ok
+        //let b = 20; //error
+
+        change = function() {
+            a = 5;
+            b = 0;
+        }
+        change();
+        console.log(a, b);
+
+        change = function() {
+            var a = 1;
+            let b = 2;
+        }
+
+        change();
+        console.log(a, b);
+
+        change = function() {
+            let ff = function() {
+                return "ff";
+            }
+            var gg = function() {
+                return "gg";
+            }
+            hh = function() {
+                return "hh";
+            }
+        }
+
+        change();
+        //out of scope
+        console.log(window.ff);
+        //out of scope
+        console.log(window.gg);
+        //window scope
+        console.log(window.hh);
+
+        //try var and let to understand scoping
+        for (var j = 0; j < 10; j++) {
+            console.log(j);
+        }
+        console.log(j);
+        console.log("(end) scoping");
+
 
 
 
         //array
+        console.log("(start) arrays");
         x = [];
         x.push(7);
         x.push(8);
         x[2] = 9;
         x["ciao"] = 10;
         console.log(x);
-        alert("return");
 
-        //cycles
-        for (i = 0; i < x.length; i++) {
-            console.log(x[i]);
+
+        y = [4, 5, 8, 1, 6, 3];
+        console.log(y.sort());
+        console.log(y.reverse());
+
+        y = [4, 5, 8, 1, 6, 3, 2];
+
+        /*
+        function compare(a, b) {
+            if (a è inferiore a b secondo un criterio di ordinamento) {
+                return -1;
+            }
+            if (a è maggiore di b secondo un criterio di ordinamento) {
+                return 1;
+            }
+            // a deve essere uguale a b
+            return 0;
+            }
+        */
+        console.log("SORT DESC", y.sort(function(a, b) {
+            return b - a;
+        }));
+
+        console.log("SORT ASC", y.sort((a, b) => {
+            return a - b;
+        }));
+
+        Math.min(30, 40);
+
+        var things = ['word', 'Word', '1 Word', '2 Words'];
+        things.sort(); // ['1 Word', '2 Words', 'Word', 'word']
+
+        console.log(y.pop());
+        console.log(y);
+
+
+        minArray = (array) => {
+            return Math.min.apply(null, array);
         }
 
-        i = 0;
-        while (i < temp.length) {
-            console.log(temp[i]);
-            i++;
-        }
+        console.log("MIN: ", minArray(y));
+        console.log("(end) arrays");
 
-        for (i of x) {
-            console.log("qui", i);
-        }
+        a = [1, 2, 3];
+        b = [4, 5, 6];
+        console.log(a.concat(b));
+        console.log("1,2,3,4".split(",").map(a => parseInt(a)));
+        console.log(a.join('-'));
 
-        for (i in x) {
-            console.log("quo", i, x[i]);
-        }
-
+        x = new Array(20);
+        y = Array.of(3)
+        console.log(x, y);
+        console.log(b.indexOf(5));
+        b.key = "key";
+        console.log(b.hasOwnProperty("key"));
 
         //filtering
         x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -112,6 +256,45 @@
             k = o * 2;
             return k >= 4
         }));
+
+        //reduce
+        x.reduce((accumulator, currentValue, currentIndex, array) => accumulator + currentValue);
+
+        x = [0, 'a', 2, 3, 'c', 500, 6, 7, 8, '90', 10];
+        y = x.reduce((accumulator, currentValue, currentIndex, array) => {
+            accumulator["key" + currentIndex] = currentValue;
+            return accumulator
+        }, {});
+
+        console.log("----");
+        console.log(y);
+        console.log("----");
+
+        //cycles
+        console.log("(start) cycles");
+        for (i = 0; i < x.length; i++) {
+            console.log(x[i]);
+        }
+
+        temp = [1, 2, 3, 4];
+        i = 0;
+        while (i < temp.length) {
+            console.log(temp[i]);
+            i++;
+        }
+
+        for (i of x) {
+            console.log(i);
+        }
+
+        for (i in x) {
+            console.log(i, x[i]);
+        }
+
+
+
+
+        console.log("(end) cycles");
     </script>
 </head>
 

@@ -1,7 +1,7 @@
 <head>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            //alert("DOMContentLoaded");
+            console.info("DOMContentLoaded");
 
             sumButton = document.getElementById("sumButton");
 
@@ -23,6 +23,18 @@
             hoverDiv.addEventListener("mouseover", function(e) {
                 alert("entered in hoverDiv");
             }); */
+
+            function logSubmit(event) {
+                var formData = new FormData(document.querySelector('form'))
+                console.log(formData);
+                log.innerHTML = `Form Submitted with value <b>${document.getElementById('field').value}</b>! Time stamp: ${event.timeStamp}`;
+                event.preventDefault();
+            }
+
+            const form = document.getElementById('form');
+            const log = document.getElementById('log');
+            form.addEventListener('submit', logSubmit);
+
         });
     </script>
     <style>
@@ -44,4 +56,12 @@
 
     </div>
     <button onclick="this.innerHTML = Date()">The time is?</button>
+
+    <hr/>
+    <form id="form">
+        <label>Test field: <input type="text" name="field" id="field"></label>
+        <br><br>
+        <button type="submit">Submit form</button>
+    </form>
+    <p id="log"></p>
 </body>

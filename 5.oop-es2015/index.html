@@ -1,30 +1,30 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         //ecmascript 15
-        /*  class Rectangle {
-             constructor(height, width) {
-                 this.height = height;
-                 this.width = width;
-             }
+        class Rectangle {
+            constructor(height, width) {
+                this.height = height;
+                this.width = width;
+            }
 
-             area() {
-                 return this.height * this.width;
-             }
-         }
+            area() {
+                return this.height * this.width;
+            }
+        }
 
-         let rectangle = new Rectangle(3, 4);
-         console.log(rectangle.area());
+        let rectangle = new Rectangle(3, 4);
+        console.log(rectangle.area());
 
-         class ColoredRectangle extends Rectangle {
-             constructor(height, width, color) {
-                 super(height, width);
-                 this.color = color;
-             }
-         }
+        class ColoredRectangle extends Rectangle {
+            constructor(height, width, color) {
+                super(height, width);
+                this.color = color;
+            }
+        }
 
-         let coloredRectangle = new ColoredRectangle(5, 20, 'Yellow');
-         console.log(coloredRectangle);
-         console.log(coloredRectangle.area()); */
+        let coloredRectangle = new ColoredRectangle(5, 20, 'Yellow');
+        console.log(coloredRectangle);
+        console.log(coloredRectangle.area());
 
         class Abstract {
             constructor() {
@@ -32,10 +32,14 @@
                     throw new TypeError("Cannot construct Abstract instances directly");
                 }
 
-                if (this.method === undefined) {
+                if (this.methodToOverride === undefined) {
                     // or maybe test typeof this.method === "function"
                     throw new TypeError("Must override method");
                 }
+            }
+
+            random() {
+                return Math.floor(Math.random() * 1000);
             }
         }
 
@@ -45,7 +49,7 @@
             }
 
             //ovveride
-            method() {
+            methodToOverride() {
                 console.log("implemented");
             }
         }
